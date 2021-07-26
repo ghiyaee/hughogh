@@ -1,18 +1,24 @@
 const code_person = document.getElementById("code-person");
 const names = document.getElementById("names");
 const days = document.getElementById("days");
-const mozd = document.getElementById("mozd");
-const mazya = document.getElementById("mazya");
+const wage = document.getElementById("wage");
+const benefit = document.getElementById("benefit");
+const month = document.getElementById("month");
 const list_person = document.getElementById("list-person");
 const message_box = document.getElementById("message");
 
+// month.addEventListener("click", (e) => {
+//   console.log(e.target);
+// });
+
 class Person {
-  constructor(code_person, names, days, mozd, mazya) {
+  constructor(code_person, names, days, wage, benefit, month) {
     this.code_person = code_person;
     this.names = names;
     this.days = days;
-    this.mozd = mozd;
-    this.mazya = mazya;
+    this.wage = wage;
+    this.benefit = benefit;
+    this.month = month;
   }
 }
 
@@ -22,21 +28,22 @@ class Mymethod {
     row.classList.add("row-list");
     row.innerHTML = `<td>${newperson.code_person.value}</td>
     <td >${newperson.names.value}</td>
+    <td >${newperson.month.value}</td>
     <td class="d">${newperson.days.value}</td>
-    <td class="mo">${newperson.mozd.value}</td>
-    <td  class="ma">${newperson.mazya.value}</td>`;
+    <td class="mo">${newperson.wage.value}</td>
+    <td  class="ma">${newperson.benefit.value}</td>`;
     const day = newperson.days.value;
-    const moz = newperson.mozd.value;
-    const maz = newperson.mazya.value;
-    const sum = day * moz + Number(maz);
+    const wage = newperson.wage.value;
+    const benefit = newperson.benefit.value;
+    const sum = day * wage + Number(benefit);
     row.innerHTML += `<td>${sum}</td>`;
-    const bei = (sum * 7) / 100;
-    row.innerHTML += `<td>${bei}</td>`;
-    const mali = (sum * 18) / 100;
-    row.innerHTML += `<td>${mali}</td>`;
-    const sum_ko = bei + mali;
-    row.innerHTML += `<td>${sum_ko}</td>`;
-    const total = sum - (bei + mali);
+    const insurance = (sum * 7) / 100;
+    row.innerHTML += `<td>${insurance}</td>`;
+    const tax = (sum * 18) / 100;
+    row.innerHTML += `<td>${tax}</td>`;
+    const sum_insur_tax = insurance + tax;
+    row.innerHTML += `<td>${sum_insur_tax}</td>`;
+    const total = sum - (insurance + tax);
     row.innerHTML += `<td>${total}</td>`;
     row.innerHTML += `<td ><a href="#" class="delete" >x</a></td>`;
     list_person.appendChild(row);
@@ -46,8 +53,8 @@ class Mymethod {
     code_person.value = "";
     names.value = "";
     days.value = "";
-    mozd.value = "";
-    mazya.value = "";
+    wage.value = "";
+    benefit.value = "";
   }
 
   show_message(message, className) {
@@ -70,14 +77,16 @@ class Mymethod {
 }
 
 document.querySelector("#forms").addEventListener("submit", (e) => {
-  const newperson = new Person(code_person, names, days, mozd, mazya);
+  const newperson = new Person(code_person, names, days, wage, benefit, month);
   const mymethod = new Mymethod();
+  // console.log(newperson.month);
   if (
     !code_person.value ||
     !days.value ||
     !names.value ||
-    !mozd.value ||
-    !mazya.value
+    !wage.value ||
+    !benefit.value ||
+    !month
   ) {
     mymethod.show_message("مقادیر را باید وارد کنید", "error");
   } else {
