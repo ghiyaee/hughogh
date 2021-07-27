@@ -6,10 +6,11 @@ const benefit = document.getElementById("benefit");
 const month = document.getElementById("month");
 const list_person = document.getElementById("list-person");
 const message_box = document.getElementById("message");
-
-// month.addEventListener("click", (e) => {
-//   console.log(e.target);
-// });
+const color_night = document.querySelector(".btn-night");
+const color_sun = document.querySelector(".btn-sun");
+const bckgrund = document.querySelector(".container");
+const title = document.querySelector(".title-up");
+const row = document.getElementById("btn-save");
 
 class Person {
   constructor(code_person, names, days, wage, benefit, month) {
@@ -22,6 +23,11 @@ class Person {
   }
 }
 
+class Colors {
+  constructor(color) {
+    this.color = color;
+  }
+}
 class Mymethod {
   add_row(newperson) {
     const row = document.createElement("tr");
@@ -35,15 +41,15 @@ class Mymethod {
     const day = newperson.days.value;
     const wage = newperson.wage.value;
     const benefit = newperson.benefit.value;
-    const sum = day * wage + Number(benefit);
-    row.innerHTML += `<td>${sum}</td>`;
-    const insurance = (sum * 7) / 100;
+    const sum_d_w = day * wage + Number(benefit);
+    row.innerHTML += `<td>${sum_d_w}</td>`;
+    const insurance = (sum_d_w * 7) / 100;
     row.innerHTML += `<td>${insurance}</td>`;
-    const tax = (sum * 18) / 100;
+    const tax = (sum_d_w * 18) / 100;
     row.innerHTML += `<td>${tax}</td>`;
     const sum_insur_tax = insurance + tax;
     row.innerHTML += `<td>${sum_insur_tax}</td>`;
-    const total = sum - (insurance + tax);
+    const total = sum_d_w - (insurance + tax);
     row.innerHTML += `<td>${total}</td>`;
     row.innerHTML += `<td ><a href="#" class="delete" >x</a></td>`;
     list_person.appendChild(row);
@@ -74,12 +80,45 @@ class Mymethod {
       e.parentElement.parentElement.remove();
     }
   }
+  chang_night() {
+    bckgrund.style.backgroundColor = `rgb(20,18,17)`;
+    document.querySelector("h1").style.color = "white";
+    title.style.backgroundColor = ` rgb(20,18,17)`;
+    document.querySelectorAll("label").forEach((list) => {
+      list.style.color = `rgb(180,180,180)`;
+    });
+    document.querySelector("table").style.backgroundColor = `rgb(255,255,255)`;
+    document.querySelector("table").style.color = `rgb(180,180,180)`;
+    row.style.color = `rgb(180,180,180)`;
+    document.querySelectorAll("input").forEach((list) => {
+      list.style.backgroundColor = `rgb(180,180,180)`;
+    });
+    document.getElementById("btn-save").style.color = `rgb(180,62,41)`;
+    document.querySelector("select").style.backgroundColor = `rgb(180,180,180)`;
+  }
+  chang_sun() {
+    bckgrund.style.backgroundColor = `rgb(66,177,90)`;
+    document.querySelector("h1").style.color = "black";
+    title.style.backgroundColor = "aquamarine";
+    document.querySelectorAll("label").forEach((list) => {
+      list.style.color = `rgb(0,0,0)`;
+    });
+    document.querySelector("table").style.backgroundColor = "lightseagreen";
+    document.querySelector("table").style.color = `rgb(20,18,17)`;
+    row.style.color = `rgb(255,255,250)`;
+    document.querySelectorAll("input").forEach((list) => {
+      list.style.backgroundColor = "white";
+    });
+    document.getElementById(
+      "btn-save"
+    ).style.backgroundColor = `rgb(180,62,41)`;
+    document.querySelector("select").style.backgroundColor = `rgb(255,255,255)`;
+  }
 }
-
 document.querySelector("#forms").addEventListener("submit", (e) => {
   const newperson = new Person(code_person, names, days, wage, benefit, month);
   const mymethod = new Mymethod();
-  // console.log(newperson.month);
+
   if (
     !code_person.value ||
     !days.value ||
@@ -101,4 +140,14 @@ list_person.addEventListener("click", (e) => {
   const mymethod = new Mymethod();
   mymethod.delete_row(e.target);
   mymethod.show_message("سطر انتخاب شده پاک شد", "succes");
+});
+
+color_night.addEventListener("click", () => {
+  const mymethod = new Mymethod();
+  mymethod.chang_night();
+});
+
+color_sun.addEventListener("click", () => {
+  const mymethod = new Mymethod();
+  mymethod.chang_sun();
 });

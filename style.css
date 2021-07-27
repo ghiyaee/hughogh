@@ -6,23 +6,39 @@
 body {
   direction: rtl;
 }
-.title h1 {
+.container {
+  background-color: rgb(66, 177, 90);
+  height: 100vh;
+  width: 100%;
+}
+.btn-back {
+}
+.title {
   text-align: center;
   margin: 15px 0px;
 }
 .title-up {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   box-shadow: 0 1px 2px 3px #e3e3e3;
-  width: 50%;
+  width: 90%;
   margin: 0 auto;
   position: relative;
-  background-image: linear-gradient(green, rgb(212, 212, 17));
+  /* background-image: linear-gradient(green, rgb(212, 212, 17)); */
+  background-color: aquamarine;
 }
 #forms {
   display: flex;
+}
+#title-right {
+  display: flex;
   flex-direction: column;
-  padding: 10px;
+  margin: 20px;
+}
+#title-left {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
 }
 .person img {
   width: 100px;
@@ -46,33 +62,36 @@ body {
   font-size: 20px;
   font-weight: bold;
   margin-top: 10px;
-  background-color: tomato;
+  background-color: rgb(180, 62, 41);
   color: white;
   border-radius: 8px;
+  padding: 5px 40px;
 }
 table {
   box-shadow: 0 1px 2px 3px #e3e3e3;
   margin-top: 1.5em;
-  margin-right: 200px;
-  background-image: linear-gradient(rgb(212, 212, 17), green);
+  margin-right: 55px;
+  /* background-image: linear-gradient(rgb(212, 212, 17), green); */
+  background-color: lightseagreen;
 }
 table th {
-  padding: 0px 10px 0px;
+  padding: 0px 15px 0px;
 }
 .row-list td {
-  padding: 20px 10px 0px;
+  padding: 5px 8px 0px;
   font-weight: bold;
-  color: rgb(66, 25, 17);
+  color: rgb(20, 18, 17);
+  /* color: rgb(180, 180, 180); */
 }
 .alert {
   position: absolute;
-  left: 90px;
-  bottom: 40px;
-  padding: 5px;
+  left: 500px;
+  bottom: 15px;
+  padding: 3px;
   border-radius: 5px;
   color: white;
   font-weight: bold;
-  font-size: 35px;
+  font-size: 25px;
 }
 .succes {
   background-color: rgb(10, 136, 94);
@@ -97,4 +116,17 @@ table th {
   text-decoration: none;
   font-weight: bold;
   font-size: 30px;
+}
+.btn-night {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+.btn-sun {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: yellow;
+  cursor: pointer;
 }
