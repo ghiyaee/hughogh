@@ -66,13 +66,15 @@ body {
   color: white;
   border-radius: 8px;
   padding: 5px 40px;
+  /* width: 220%; */
 }
 table {
   box-shadow: 0 1px 2px 3px #e3e3e3;
   margin-top: 1.5em;
-  margin-right: 75px;
+  margin-right: 40px;
   /* background-image: linear-gradient(rgb(212, 212, 17), green); */
   background-color: lightseagreen;
+  width: 95%;
 }
 table th {
   padding: 0px 13px 0px;
@@ -131,12 +133,12 @@ table th {
   cursor: pointer;
 }
 .total {
-  margin-right: 35.5%;
-  margin-top: 13px;
+  margin-right: 36%;
+  margin-top: 15px;
   box-shadow: 0 1px 2px 3px #e3e3e3;
-  width: 60%;
+  width: 62%;
 }
 .total span {
-  padding: 5px 30px;
+  padding: 5px 35px;
   font-weight: bold;
 }
