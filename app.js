@@ -12,7 +12,8 @@ const bckgrund = document.querySelector("body");
 const title = document.querySelector(".title-up");
 const row = document.getElementById("btn-save");
 const row_sum = document.getElementsByClassName("total");
-
+const showclock = document.getElementById("setclock");
+console.log(clock);
 class Person {
   constructor(code_person, names, days, wage, benefit, month) {
     this.code_person = code_person;
@@ -107,6 +108,7 @@ class Mymethod {
     document.querySelectorAll("span").forEach((list) => {
       list.style.color = `rgb(142,113,255)`;
     });
+    document.getElementById("clock").style.color = `rgb(180,180,180)`;
   }
   chang_sun() {
     bckgrund.style.backgroundColor = `rgb(66,177,90)`;
@@ -129,6 +131,7 @@ class Mymethod {
     document.querySelectorAll("span").forEach((list) => {
       list.style.color = `rgb(0,0,0)`;
     });
+    document.getElementById("clock").style.color = `rgb(0,0,0)`;
   }
 }
 // /* start local storge
@@ -204,3 +207,20 @@ color_sun.addEventListener("click", () => {
   const mymethod = new Mymethod();
   mymethod.chang_sun();
 });
+
+function show() {
+  const clock = new Date();
+  showclock.innerText = clock.toLocaleTimeString();
+}
+
+document.getElementById("clock").addEventListener("click", setup);
+let check = true;
+function setup() {
+  if (check == true) {
+    sett = setInterval(show, 1000);
+    check = false;
+  } else {
+    clearInterval(sett);
+    check = true;
+  }
+}
